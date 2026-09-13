@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="cesnietor/VacuumRobot 的 20 步平板版制作手册，包含机械装配、接线、程序烧录和调试。"
+    />
+    <meta name="theme-color" content="#16231f" />
+    <title>自动扫地机器人复刻手册</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!--
+      THESIS: A workbench maintenance manual, not a promotional page. Every screen answers
+      exactly what to do next and refuses the generic hero-plus-cards tutorial layout.
+      OWN-WORLD: Paper-white technical sheets, graphite rules, safety orange, circuit teal,
+      numbered metal-like tags, large instructional drawings, and checklist marks.
+      STORY: The reader moves from parts to a tested obstacle-avoiding vacuum robot, always
+      knowing the phase, the active step, and what remains.
+      FIRST VIEWPORT: A full-width build-status band with the robot title, 20-step route,
+      progress marks, and direct entry into Step 1; the step rail anchors the left on wide
+      tablets and becomes a top drawer on portrait screens.
+      FORM: An operational cutting-bench rail translated into a build manual; seed key 5f280c16.
+      FINISH: unreviewed and undocumented is unfinished; this build ends with the finish
+      review, the verdict, and DESIGN.md.
+    -->
+    <a class="skip-link" href="#step-stage">跳到当前步骤</a>
+
+    <div class="app-shell">
+      <header class="topbar">
+        <button
+          class="icon-button menu-button"
+          id="menu-button"
+          type="button"
+          aria-controls="guide-nav"
+          aria-expanded="false"
+          aria-label="打开步骤目录"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+
+        <a class="brand" href="#overview" aria-label="返回总览">
+          <span class="brand-mark" aria-hidden="true">VR</span>
+          <span>
+            <strong>VACUUM ROBOT</strong>
+            <small>平板复刻手册</small>
+          </span>
+        </a>
+
+        <div class="top-progress" aria-label="制作进度">
+          <div class="top-progress-copy">
+            <span id="top-progress-label">已完成 0 / 20</span>
+            <strong id="top-progress-percent">0%</strong>
+          </div>
+          <div class="progress-track" aria-hidden="true">
+            <span id="top-progress-bar"></span>
+          </div>
+        </div>
+
+        <a
+          class="source-button"
+          href="https://www.instructables.com/Build-Your-Own-Vacuum-Robot/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          原教程
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M14 4h6v6M20 4l-9 9M18 13v6H5V6h6" />
+          </svg>
+        </a>
+      </header>
+
+      <button
+        class="nav-scrim"
+        id="nav-scrim"
+        type="button"
+        aria-label="关闭步骤目录"
+        tabindex="-1"
+      ></button>
+
+      <aside class="step-rail" id="guide-nav" aria-label="20 步制作目录">
+        <div class="rail-heading">
+          <span>BUILD ROUTE</span>
+          <strong>20 步路线</strong>
+        </div>
+        <nav id="step-list" class="step-list"></nav>
+        <button class="reset-button" id="reset-progress" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 4v6h6M20 20v-6h-6" />
+            <path d="M5.5 15a7 7 0 0 0 11.8 2.6L20 14M4 10l2.7-3.6A7 7 0 0 1 18.5 9" />
+          </svg>
+          清除本机进度
+        </button>
+      </aside>
+
+      <main class="main-content" id="main-content">
+        <section class="overview" id="overview" aria-labelledby="overview-title">
+          <div class="overview-copy">
+            <p class="project-line">CESNIETOR / VACUUMROBOT</p>
+            <h1 id="overview-title">自动扫地机器人复刻手册</h1>
+            <p class="overview-lead">
+              20 步完成一台会避障、会吸尘的 Arduino 扫地机器人。按顺序推进，关键图片和接线点都留在当前步骤里。
+            </p>
+            <div class="overview-actions">
+              <button class="primary-button" id="start-build" type="button">
+                从第 1 步开始
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </button>
+              <a
+                class="secondary-button"
+                href="https://github.com/cesnietor/VacuumRobot"
+                target="_blank"
+                rel="noreferrer"
+              >
+                查看 GitHub 项目
+              </a>
+            </div>
+          </div>
+
+          <dl class="build-facts">
+            <div>
+              <dt>主控</dt>
+              <dd>Arduino Uno</dd>
+            </div>
+            <div>
+              <dt>驱动</dt>
+              <dd>L298N · IRF520</dd>
+            </div>
+            <div>
+              <dt>感知</dt>
+              <dd>Sharp IR · 保险杠</dd>
+            </div>
+            <div>
+              <dt>尺寸</dt>
+              <dd>210 × 210 × 80 mm</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="route-strip" aria-label="制作阶段">
+          <div>
+            <span>01–05</span>
+            <strong>准备</strong>
+            <small>核对零件、理解原理、完成打印</small>
+          </div>
+          <div>
+            <span>06–10</span>
+            <strong>机械</strong>
+            <small>安装传感器、电机、万向轮和保险杠</small>
+          </div>
+          <div>
+            <span>11–16</span>
+            <strong>电路</strong>
+            <small>电源、信号、主板和线束</small>
+          </div>
+          <div>
+            <span>17–20</span>
+            <strong>收尾</strong>
+            <small>集尘盒、烧录、测试和升级</small>
+          </div>
+        </section>
+
+        <section class="safety-band" aria-labelledby="safety-title">
+          <div class="safety-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 3 2.8 20h18.4L12 3Z" />
+              <path d="M12 9v5M12 17.5v.5" />
+            </svg>
+          </div>
+          <div>
+            <h2 id="safety-title">通电前先确认三件事</h2>
+            <p>电池正负极正确、所有模块共地、模拟电压不超过 5V。不要直接照搬颜色判断正负。</p>
+          </div>
+        </section>
+
+        <section class="step-stage" id="step-stage" aria-labelledby="step-title"></section>
+
+        <nav class="step-controls" aria-label="步骤切换">
+          <button class="secondary-button" id="previous-step" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M19 12H5M11 18l-6-6 6-6" />
+            </svg>
+            上一步
+          </button>
+          <span id="step-position">第 1 / 20 步</span>
+          <button class="primary-button" id="next-step" type="button">
+            下一步
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </button>
+        </nav>
+      </main>
+    </div>
+
+    <button class="back-to-top" id="back-to-top" type="button" aria-label="返回顶部">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 19V5M6 11l6-6 6 6" />
+      </svg>
+    </button>
+
+    <script src="guide-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

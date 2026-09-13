@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="STM32F103 串口四路电机控制项目摘要。" />
+    <meta name="theme-color" content="#16231f" />
+    <title>STM32 串口四路电机控制 | LYL-716</title>
+    <link rel="stylesheet" href="../hub.css" />
+    <link rel="stylesheet" href="summary.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="identity" href="../" aria-label="返回项目大厅">
+        <span class="identity-mark">LYL</span>
+        <span>
+          <strong>LYL-716</strong>
+          <small>PROJECT WORKBENCH</small>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="页面导航">
+        <a href="../">项目大厅</a>
+        <a href="#overview">项目摘要</a>
+      </nav>
+    </header>
+
+    <main class="summary-page">
+      <section class="summary-hero" id="overview">
+        <div>
+          <p class="system-line">PROJECT 02 / DOCUMENTATION IN PROGRESS</p>
+          <h1>STM32 串口四路电机控制</h1>
+          <p>
+            一个基于 STM32F103 的运动控制程序，通过串口接收速度和 PWM 指令，并读取四路编码器反馈。
+            当前代码和接线资料正在整理，公开版本尚未发布。
+          </p>
+        </div>
+        <div class="summary-status">
+          <span>STATUS</span>
+          <strong>整理中</strong>
+          <small>代码已验证结构 / 文档待补全</small>
+        </div>
+      </section>
+
+      <section class="summary-grid" aria-label="项目信息">
+        <article>
+          <span>01</span>
+          <h2>主控与接口</h2>
+          <p>STM32F103 主控，USART1 负责调试输出，USART2 与电机控制模块通信，默认波特率 115200。</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h2>运动控制</h2>
+          <p>程序发送四路电机速度或 PWM 指令，接收编码器计数与速度数据，并提供电机类型、死区和轮径等参数设置。</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h2>代码结构</h2>
+          <p><code>USER/main.c</code> 负责运行流程，<code>BSP/motor_model</code> 负责串口协议和电机参数，<code>BSP/Timer</code> 提供 10 ms 周期。</p>
+        </article>
+        <article>
+          <span>04</span>
+          <h2>后续整理</h2>
+          <p>下一步将补充硬件接线、串口协议表、测试步骤、编码器校准和可公开的工程源码。</p>
+        </article>
+      </section>
+
+      <section class="code-panel" aria-labelledby="code-title">
+        <div>
+          <p class="system-line">CURRENT FLOW</p>
+          <h2 id="code-title">当前程序流程</h2>
+        </div>
+        <pre><code>bsp_init()
+TIM3_Init()
+Motor_Usart_init()
+
+send_motor_type()
+send_motor_deadzone()
+send_upload_data()
+
+while (1) {
+  Contrl_Speed(...)
+  Deal_data_real()
+  printf("encoder / speed")
+}</code></pre>
+      </section>
+
+      <a class="button button-secondary back-link" href="../">返回项目大厅</a>
+    </main>
+  </body>
+</html>

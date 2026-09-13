@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="LYL-716 的个人项目大厅，收录机器人、嵌入式、教程和后续公开的项目。"
+    />
+    <meta name="theme-color" content="#16231f" />
+    <title>LYL-716 项目大厅</title>
+    <link rel="stylesheet" href="hub.css" />
+  </head>
+  <body>
+    <!--
+      THESIS: A personal engineering workbench, not a resume or a marketing portfolio.
+      Each project is presented as a real build artifact with status, evidence, and a route
+      into its working guide. It refuses the generic portfolio grid of interchangeable cards.
+      OWN-WORLD: Paper-white drawing sheets, graphite rules, safety orange, circuit teal,
+      stamped project numbers, and machine-readable metadata.
+      STORY: A visitor immediately sees what has been built, what is usable now, and what is
+      still being documented. The owner can add another project by adding one data record and
+      one project directory.
+      FIRST VIEWPORT: A wide workbench header with the public identity, current project count,
+      release status, and the first live project image occupying the right side.
+      FORM: The maintenance-manual rail expands into a project index; seed key 5f280c16.
+      FINISH: unreviewed and undocumented is unfinished; this build ends with the finish
+      review, the verdict, and DESIGN.md.
+    -->
+    <a class="skip-link" href="#projects">跳到项目列表</a>
+
+    <header class="site-header">
+      <a class="identity" href="#top" aria-label="返回项目大厅顶部">
+        <span class="identity-mark">LYL</span>
+        <span>
+          <strong>LYL-716</strong>
+          <small>PROJECT WORKBENCH</small>
+        </span>
+      </a>
+
+      <nav class="site-nav" aria-label="页面导航">
+        <a href="#projects">项目</a>
+        <a href="https://github.com/LYL-716" target="_blank" rel="noreferrer">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="workbench-hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="system-line">PUBLIC PROJECT INDEX / 2026</p>
+          <h1 id="page-title">我的项目大厅</h1>
+          <p>
+            这里放已经完成、正在整理和以后要继续升级的项目。每个项目都保留可运行页面、制作记录和源码入口。
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">
+              浏览项目
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </a>
+            <a class="button button-secondary" href="vacuum-robot/">
+              打开最新项目
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-board" aria-label="项目状态">
+          <div class="board-header">
+            <span>WORKBENCH STATUS</span>
+            <strong id="project-count">02</strong>
+          </div>
+          <dl>
+            <div>
+              <dt>公开项目</dt>
+              <dd id="published-count">01</dd>
+            </div>
+            <div>
+              <dt>整理中</dt>
+              <dd id="draft-count">01</dd>
+            </div>
+            <div>
+              <dt>主要方向</dt>
+              <dd>机器人 · 嵌入式</dd>
+            </div>
+            <div>
+              <dt>最近更新</dt>
+              <dd id="last-updated">2026.09</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="project-index" id="projects" aria-labelledby="projects-title">
+        <header class="index-heading">
+          <div>
+            <p>PROJECT INDEX</p>
+            <h2 id="projects-title">项目列表</h2>
+          </div>
+          <div class="project-filters" role="group" aria-label="项目筛选">
+            <button class="filter-button is-active" type="button" data-filter="全部">全部</button>
+            <button class="filter-button" type="button" data-filter="机器人">机器人</button>
+            <button class="filter-button" type="button" data-filter="嵌入式">嵌入式</button>
+            <button class="filter-button" type="button" data-filter="教程">教程</button>
+          </div>
+        </header>
+
+        <div class="projects-grid" id="projects-grid"></div>
+
+        <div class="empty-filter" id="empty-filter" hidden>
+          <strong>这个分类还没有公开项目</strong>
+          <p>项目整理完成后会出现在这里。</p>
+        </div>
+      </section>
+
+      <section class="workbench-note" aria-labelledby="note-title">
+        <span class="note-number">NEXT</span>
+        <div>
+          <h2 id="note-title">下一个项目继续按同一结构加入</h2>
+          <p>项目说明、过程图片、源码入口和在线页面会放在独立目录中，根页面只负责索引和状态。</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>LYL-716 / PROJECT WORKBENCH</span>
+      <span id="footer-year"></span>
+    </footer>
+
+    <script src="projects.js"></script>
+    <script src="hub.js"></script>
+  </body>
+</html>
