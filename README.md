@@ -1,4 +1,6 @@
-# LYL-716 项目大厅
+# LYLNBNB666 项目大厅
+
+站点显示名称：`LYLNBNB666`
 
 GitHub Pages 根站点，用来集中展示个人项目。
 
